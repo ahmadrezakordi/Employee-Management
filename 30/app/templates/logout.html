@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خروج</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #2C3E50; /* رنگ تیره */
+            color: white;
+        }
+        header {
+            background-color: #34495E; /* رنگ روشن‌تر برای نوار بالایی */
+        }
+        table {
+            background-color: #1ABC9C; /* رنگ پس‌زمینه جدول */
+        }
+        .btn {
+            color: white; /* رنگ فونت دکمه‌ها */
+            background-color: transparent; /* پس‌زمینه دکمه‌ها شفاف */
+            border: 1px solid white; /* حاشیه سفید */
+        }
+        .btn-warning {
+            background-color: #f39c12; /* رنگ دکمه ویرایش */
+        }
+        .btn-danger {
+            background-color: #e74c3c; /* رنگ دکمه حذف */
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-danger text-white text-center py-4">
+        <h1>خروج</h1>
+        <nav class="navbar navbar-expand-lg" style="background-color: #2C3E50;">
+            <a class="navbar-brand" href="{% url 'index' %}" style="color: white;">خانه</a>
+        </nav>
+    </header>
+    <main class="container mt-5">
+        <div class="alert alert-warning" role="alert">
+            آیا مطمئن هستید که می‌خواهید خارج شوید؟
+        </div>
+        <form method="post" class="bg-light p-4 rounded">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" style="color: white;">خروج</button>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary" style="color: white;">لغو</a>
+        </form>
+    </main>
+</body>
+</html>

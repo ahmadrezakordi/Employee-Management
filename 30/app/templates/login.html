@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #2C3E50; /* رنگ تیره */
+            color: white;
+        }
+        header {
+            background-color: #34495E; /* رنگ روشن‌تر برای نوار بالایی */
+        }
+        table {
+            background-color: #1ABC9C; /* رنگ پس‌زمینه جدول */
+        }
+        .btn {
+            color: white; /* رنگ فونت دکمه‌ها */
+            background-color: transparent; /* پس‌زمینه دکمه‌ها شفاف */
+            border: 1px solid white; /* حاشیه سفید */
+        }
+        .btn-warning {
+            background-color: #f39c12; /* رنگ دکمه ویرایش */
+        }
+        .btn-danger {
+            background-color: #e74c3c; /* رنگ دکمه حذف */
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-4">
+        <h1>ورود به سیستم</h1>
+        <nav class="navbar navbar-expand-lg" style="background-color: #2C3E50;">
+            <a class="navbar-brand" href="{% url 'index' %}" style="color: white;">خانه</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" href="{% url 'logout' %}" class="nav-link" style="border:none; background:none; color: white;">خروج</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <style>
+    label {
+        color: black; /* رنگ فونت لیبل‌ها */
+    }
+    .btn {
+        background-color: #28a745;
+        color: black; /* رنگ فونت دکمه */
+    }
+</style>
+    <main class="container mt-5">
+        <form method="post" class="bg-light p-4 rounded">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">نام کاربری</label>
+                <input type="text" name="username" class="form-control" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">رمز عبور</label>
+                <input type="password" name="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">ورود</button>
+            <a href="{% url 'register' %}">حساب کاربری ندارید؟</a>
+        </form>
+    </main>
+</body>
+</html>
